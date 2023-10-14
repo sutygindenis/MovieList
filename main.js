@@ -30,7 +30,8 @@ function createNewMovie () {
 // Рендеринг
 
 function render () { 
-    
+    addFilmInputNode.focus ()
+
     let movieListHTML = ''
     
     movieList.forEach(newMovie => {
@@ -167,6 +168,14 @@ function isCorrectInputValue () {
     emptyInputWarningNode.setAttribute ('hidden' , '')
     incorrectInputWarningNode.setAttribute ('hidden', '')
 }
+
+function keyEnterHandler (e) {
+    if (e.key === 'Enter' ) {
+        addFilmButtonNode.click (`click`);
+        addFilmInputNode.focus ()
+    }
+}
+
 //Слушатели событий
 
 movieListBoxWrapperNode.addEventListener ('click', (event) => {
@@ -179,6 +188,9 @@ movieListBoxWrapperNode.addEventListener ('click', (event) => {
     
     deleteMovie (id)
 })
+
+
+addFilmInputNode.addEventListener('keypress', keyEnterHandler);
 
 addFilmButtonNode.addEventListener (`click`, addAndRender)
 
