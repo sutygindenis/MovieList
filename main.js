@@ -111,6 +111,11 @@ function saveToLocalStorage () {
 }
 
 function loadFromLocalStorage () {
+
+    if (localStorage.getItem ('checkedFilm') === null) {
+        return
+    }
+
     movieList = JSON.parse(localStorage.getItem('checkedFilm'))
     
     return movieList
@@ -180,4 +185,3 @@ addFilmButtonNode.addEventListener (`click`, addAndRender)
 movieListBoxWrapperNode.addEventListener ('click', movieChecked)
 
 addFilmInputNode.addEventListener (`input`, isCorrectInputValue)
-
